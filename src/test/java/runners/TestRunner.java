@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
     @CucumberOptions( features = "src/test/features/",
     glue="steps",
     dryRun=false,
-    tags="@add",
+    tags="@login",
     plugin = {"pretty"}
     )
 
