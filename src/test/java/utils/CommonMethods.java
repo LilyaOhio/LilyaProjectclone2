@@ -1,36 +1,39 @@
 package utils;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-
-import static utils.PageInitializer.initializePageObjects;
-
+import java.util.List;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CommonMethods extends PageInitializer {
 
     public static WebDriver driver;
 
     public void openBrowserAndLaunchApplication() throws IOException {
-        switch (ConfigReader.read("browser")) {
+        switch (ConfigReader.read("browser")){
             case "Chrome":
                 //ChromeOptions options = new ChromeOptions();
                 // options.addArguments("--headless");
-                driver = new ChromeDriver();
+                driver=new ChromeDriver();
                 break;
             case "FireFox":
-                driver = new FirefoxDriver();
+                driver=new FirefoxDriver();
                 break;
             case "Edge":
                 driver = new EdgeDriver();
@@ -50,57 +53,55 @@ public class CommonMethods extends PageInitializer {
     }
 
     public void closeBrowser() {
-        if (driver != null) {
+        if(driver!= null) {
             driver.quit();
         }
     }
 
-    public void sendText(String text, WebElement element) {
+    public void sendText(String text, WebElement element){
         element.clear();
         element.sendKeys(text);
     }
 
-    public void selectFromDropDown(WebElement dropDown, String visibleText) {
-        Select sel = new Select(dropDown);
+    public void selectFromDropDown(WebElement dropDown, String visibleText){
+        Select sel =new Select(dropDown);
         sel.selectByVisibleText(visibleText);
     }
-
-    public void selectFromDropDown(String value, WebElement dropDown) {
-        Select sel = new Select(dropDown);
+    public void selectFromDropDown(String value, WebElement dropDown ){
+        Select sel =new Select(dropDown);
         sel.selectByValue(value);
     }
-
-    public void selectFromDropDown(WebElement dropDown, int index) {
-        Select sel = new Select(dropDown);
+    public void selectFromDropDown( WebElement dropDown,int index ){
+        Select sel =new Select(dropDown);
         sel.selectByIndex(index);
     }
 
-    public WebDriverWait getwait() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT));
-        return wait;
+    public WebDriverWait getwait(){
+        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT));
+        return  wait;
     }
 
-    public void waitForElementToBeClickAble(WebElement element) {
+    public void waitForElementToBeClickAble(WebElement element){
         getwait().until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void click(WebElement element) {
+    public void click(WebElement element){
         waitForElementToBeClickAble(element);
         element.click();
     }
 
-    public JavascriptExecutor getJSExecutor() {
+    public JavascriptExecutor getJSExecutor(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return js;
     }
 
-    public void jsClick(WebElement element) {
+    public void jsClick(WebElement element){
         getJSExecutor().executeScript("arguments[0].click();", element);
     }
 
 
-    public byte[] takeScreenshot(String fileName) {
-
+    public byte[] takeScreenshot(String fileName){
+        //it accepts array of byte in cucumber for the screenshot
         TakesScreenshot ts = (TakesScreenshot) driver;
         byte[] picByte = ts.getScreenshotAs(OutputType.BYTES);
         File sourceFile = ts.getScreenshotAs(OutputType.FILE);
@@ -108,27 +109,22 @@ public class CommonMethods extends PageInitializer {
         try {
             FileUtils.copyFile(sourceFile,
                     new File(Constants.SCREENSHOT_FILEPATH +
-                            fileName + " " +
-                            getTimeStamp("yyyy-MM-dd-HH-mm-ss") + ".png"));
+                            fileName+" "+
+                            getTimeStamp("yyyy-MM-dd-HH-mm-ss")+".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         return picByte;
     }
 
-    public String getTimeStamp(String pattern) {
+    public String getTimeStamp(String pattern){
+        //this method will return the timestamp which we will add in ss method
+        Date date = new Date();
 
-       Date date = new Date();
-
+        //yyyy-mm-dd-hh-mm-ss
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-       return sdf.format(date);
-   }
+        return sdf.format(date);
     }
 
 
-
-
-
-
-
-
+}

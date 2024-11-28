@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
+import static utils.PageInitializer.loginPage;
+
 public class LoginSteps extends CommonMethods {
     //public WebDriver driver;
 
