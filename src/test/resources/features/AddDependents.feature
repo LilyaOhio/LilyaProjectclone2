@@ -13,7 +13,7 @@ Feature: Add dependent scenario
     When  user clicks on ID number
     And user clicks on Dependents option
     And user clicks on Add option
-    Then user enter firstname
+    Then user enter firstname "Emilia"
     When user select relationship
     And user enters Date of Birth
     Then dependets saved successfully

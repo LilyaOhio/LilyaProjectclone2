@@ -50,6 +50,7 @@ public class CommonMethods extends PageInitializer {
         //this ,method will call all the objects
         // initializePageObjects();
         initializePageObjects();
+
     }
 
     public void closeBrowser() {

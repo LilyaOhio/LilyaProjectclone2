@@ -16,6 +16,7 @@ Feature: Add membership
     And user clicks on Add option button
     Then user select option from dropdown menu
     And user select Subscription Paid By
-    Then user enter paid amount
+    Then user enter paid amount "70"
     Then user select Currency
     And user enters day of Subscription and Renewal
+    Then user clicks on save button

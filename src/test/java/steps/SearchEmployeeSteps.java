@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class SearchEmployeeSteps extends CommonMethods {
 
-    //DashboardSteps dashboardSteps=new DashboardSteps();
+
     @When("user clicks on PIM option")
     public void user_clicks_on_pim_option() {
         //WebElement PimOption = driver.findElement(By.id("menu_pim_viewPimModule"));

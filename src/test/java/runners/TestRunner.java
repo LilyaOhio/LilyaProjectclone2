@@ -6,11 +6,13 @@ import org.junit.runner.RunWith;
 
 
     @RunWith(Cucumber.class)
-    @CucumberOptions( features = "src/test/features/",
+    @CucumberOptions( features = "src/test/resources/features/",
     glue="steps",
-    dryRun=true,
-    tags="@member",
-    plugin = {"pretty"}
+    dryRun=false,
+    tags="@login",
+    plugin = {"pretty", "html:target/cucumber.html","json:target/cucumber.json",
+            // to execute failed test cases one more time
+            "rerun:target/failed.tex"}
     )
 
     public class TestRunner {

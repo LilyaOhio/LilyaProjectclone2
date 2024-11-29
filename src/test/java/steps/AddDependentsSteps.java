@@ -41,13 +41,13 @@ public class AddDependentsSteps extends CommonMethods {
         click(addDependentsPage.Addoption);
     }
 
-
-    @Then("user enter firstname")
-    public void user_enter_firstname() throws IOException {
-        //WebElement firstName = driver.findElement(By.id("dependent_name"));
-        //firstName.sendKeys("Emilia");
-        sendText("Emilia",addDependentsPage.firstName);
+    @Then("user enter firstname {string}")
+    public void user_enter_firstname(String string) {
+        WebElement firstName = driver.findElement(By.id("dependent_name"));
+        firstName.sendKeys(string);
     }
+
+
 
     @When("user select relationship")
     public void user_select_relationship() {
