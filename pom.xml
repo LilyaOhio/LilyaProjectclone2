@@ -96,7 +96,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Batch20HRMSCucumber</projectName>
+                            <projectName>LilyaProjectclone1</projectName>
                             <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
                             <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}</outputDirectory>
