@@ -46,19 +46,19 @@ public class MembershipSteps extends CommonMethods {
 
     @Then("user select Currency")
     public void user_select_currency() {
-       WebElement currency = driver.findElement(By.id("membership_currency"));
+        WebElement currency = driver.findElement(By.id("membership_currency"));
         Select sel = new Select(currency);
         sel.selectByVisibleText("United States Dollar");
     }
 
     @Then("user enters day of Subscription and Renewal")
-    public void user_enters_day_of_subscription_and_renewal() {
+    public void user_enters_day_of_subscription_and_renewal() throws InterruptedException {
         WebElement subscriptionCommenceDate = driver.findElement(By.id("membership_subscriptionCommenceDate"));
         subscriptionCommenceDate.click();
 
         WebElement month = driver.findElement(By.xpath("//select[@class='ui-datepicker-month']"));
         Select sel = new Select(month);
-        sel.selectByValue("10");
+        sel.selectByValue("2");
 
         WebElement year = driver.findElement(By.xpath("//select[@class='ui-datepicker-year']"));
         Select sel1 = new Select(year);
@@ -68,34 +68,39 @@ public class MembershipSteps extends CommonMethods {
         for (WebElement date : Alldate) {
             if (date.getText().equals("3")) {
                 date.click();
+            }
+        }
 
 
-                WebElement renewal = driver.findElement(By.id("membership_subscriptionRenewalDate"));
-                renewal.click();
-                WebElement month2 = driver.findElement(By.xpath("//select[@class='ui-datepicker-month']"));
-                Select sel2 = new Select(month2);
-                sel2.selectByValue("10");
 
-                WebElement year2 = driver.findElement(By.xpath("//select[@class='ui-datepicker-year']"));
-                Select sel3 = new Select(year2);
-                sel3.selectByValue("2025");
+        WebElement renewal = driver.findElement(By.id("membership_subscriptionRenewalDate"));
+        renewal.click();
+        WebElement month2 = driver.findElement(By.xpath("//select[@class='ui-datepicker-month']"));
+        Select sel2 = new Select(month2);
+        sel2.selectByValue("2");
 
-                List<WebElement> Alldate2 = driver.findElements(By.xpath("//table/tbody/tr/td/a"));
-                for (WebElement date2 : Alldate2) {
-                    if (date2.getText().equals("3")) {
-                        date2.click();
-                    }
-                }
+        WebElement year2 = driver.findElement(By.xpath("//select[@class='ui-datepicker-year']"));
+        Select sel3 = new Select(year2);
+        sel3.selectByValue("2025");
+
+        List<WebElement> Alldate2 = driver.findElements(By.xpath("//table/tbody/tr/td/a"));
+        for (WebElement date2 : Alldate2) {
+            if (date2.getText().equals("3")) {
+                date2.click();
             }
         }
     }
-                    @Then("user clicks on save button")
-                    public void user_clicks_o_save_button () {
-                        WebElement saveButton = driver.findElement(By.id("btnSaveMembership"));
-                        saveButton.click();
-                    }
+            @Then("user clicks on save button")
+            public void user_clicks_o_save_button () {
+                WebElement saveButton = driver.findElement(By.id("btnSaveMembership"));
+                saveButton.click();
+            }
 
-                }
+        }
+
+
+
+
 
 
 
