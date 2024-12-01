@@ -79,7 +79,7 @@
                 <version>3.5.1</version>
                 <configuration>
                     <includes>
-                        <include>**/*TestRunner.java</include>
+                        <include>**/*runners.TestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
@@ -96,7 +96,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>LilyaProjectclone1</projectName>
+                            <projectName>LilyaProjectclone2</projectName>
                             <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
                             <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}</outputDirectory>
