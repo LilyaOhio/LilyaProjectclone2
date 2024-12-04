@@ -1,6 +1,6 @@
 Feature: Login scenarios
 
-  @login @smoke @regression
+  @login @smoke @regression5
   Scenario: admin login
     ##Given user is able to access HRMS application
     When user enters admin username and password

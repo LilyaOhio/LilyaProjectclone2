@@ -17,3 +17,22 @@ Feature: Add dependent scenario
     When user select relationship
     And user enters Date of Birth
     Then dependets saved successfully
+
+  @noName
+
+  Scenario Outline: incorrect credentials
+
+    And user enter emplyee ID "12306546"
+    When user clicks on search button
+    Then user is albe to see employee
+    When  user clicks on ID number
+    And user clicks on Dependents option
+    And user clicks on Add option
+    When user select relationship
+    And user enters Date of Birth
+    Then dependets saved successfully
+    And  Error messages should be clear, easily visible "<Error message>"
+
+    Examples:
+      | Error message|
+      |Required      |
